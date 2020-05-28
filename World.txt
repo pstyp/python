@@ -1,0 +1,137 @@
+1)
+
+SELECT count(Name) 
+FROM city 
+WHERE CountryCode='USA';
+
+
+2) 
+SELECT Population, LifeExpectancy 
+FROM country
+WHERE Name='Argentina';
+
+3)
+SELECT Name
+FROM country
+WHERE LifeExpectancy IS NOT NULL
+ORDER BY LifeExpectancy DESC
+LIMIT 1;
+
+4)
+SELECT c.Name
+FROM city c
+LEFT OUTER JOIN country cc
+ON c.ID=cc.Capital
+WHERE cc.Name='Spain';
+
+5)
+SELECT Language
+FROM countrylanguage cl
+LEFT OUTER JOIN country cc
+ON cl.CountryCode=cc.Code
+WHERE Region='Southeast Asia';
+
+6)
+SELECT Name
+FROM city
+WHERE Name like 'F%'
+LIMIT 25;
+
+7) 
+
+SELECT count(Name) 
+FROM city 
+WHERE CountryCode=(SELECT Code
+FROM country
+WHERE Name='China');
+
+
+8)
+
+SELECT Name
+FROM country
+WHERE Population IS NOT NULL
+ORDER BY Population ASC
+LIMIT 1;
+
+9)
+SELECT count(Name)
+FROM country;
+
+10)
+SELECT Name
+FROM country
+ORDER BY Population DESC
+LIMIT 10;
+
+11)
+SELECT Name
+FROM city
+WHERE CountryCode=(SELECT Code
+FROM country
+WHERE Name='Japan')
+ORDER by Population DESC
+LIMIT 5;
+
+
+12)
+SELECT Name, Code
+FROM country
+WHERE HeadOfState='Elisabeth II';
+
+
+13) 
+SELECT Name, Population/SurfaceArea AS ratio
+FROM country 
+WHERE Population IS NOT NULL
+ORDER BY ratio ASC
+LIMIT 10;
+
+14)
+SELECT DISTINCT Language 
+FROM countrylanguage;
+
+
+15) 
+SELECT Name, GNP+GNPOld  AS GDP
+FROM country 
+WHERE GNPOld IS NOT NULL
+ORDER BY GDP DESC
+LIMIT 10;
+
+
+16)
+SELECT Name
+FROM country
+ORDER BY SurfaceArea DESC
+LIMIT 10;
+
+
+17) 
+SELECT Name
+FROM country 
+WHERE Code IN (SELECT CountryCode
+FROM countrylanguage
+WHERE Percentage>50);
+
+
+18)
+SELECT Name
+FROM country
+WHERE LifeExpectancy IS NOT NULL
+ORDER BY LifeExpectancy ASC
+LIMIT 1;
+
+19) 
+SELECT GovernmentForm, COUNT(GovernmentForm) AS MostCommonGovernmentForm​
+FROM country
+GROUP BY GovernmentForm
+ORDER BY MostCommonGovernmentForm​ DESC
+LIMIT 1;
+
+20)
+
+SELECT COUNT(Name)
+FROM country
+WHERE IndepYear IS NOT NULL;
+
